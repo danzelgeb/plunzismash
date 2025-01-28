@@ -23,7 +23,7 @@ public class GameManager {
 
     public void checkStart() {
         if (gameState == GameState.LOBBY && Smash.getInstance().getPlayerManager().getPlayers().size() >= 2) {
-            gameState = GameState.INGAME;
+            setGameState(GameState.INGAME);
             //todo start cooldown && random tp
             final int[] cooldown = {10};
             new BukkitRunnable() {
