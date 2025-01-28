@@ -56,7 +56,7 @@ public class Data {
     public static void prepareJoin(Player player) {
         player.teleport(Bukkit.getWorld("lobby").getSpawnLocation());
         player.setGameMode(GameMode.ADVENTURE);
-        player.setHealth(6.0);
+        player.setMaxHealth(6.0);
         player.setFoodLevel(20);
         player.getInventory().clear();
     }

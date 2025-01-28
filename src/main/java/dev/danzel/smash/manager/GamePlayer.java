@@ -28,6 +28,7 @@ public class GamePlayer {
 
     public void kill() {
         hp = hp - 1;
+        player.setMaxHealth(hp * 2);
         if (hp == 0) {
             player.setGameMode(GameMode.SPECTATOR);
             Smash.getInstance().getGameManager().setGameState(GameManager.GameState.RESTART);

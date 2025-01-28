@@ -3,9 +3,11 @@ package dev.danzel.smash;
 import dev.danzel.smash.data.Data;
 import dev.danzel.smash.listener.EntityDamageByEntityListener;
 import dev.danzel.smash.listener.EntityDamageListener;
+import dev.danzel.smash.listener.FoodLevelChangeListener;
 import dev.danzel.smash.listener.PlayerInteractListener;
 import dev.danzel.smash.listener.PlayerJoinQuitListener;
 import dev.danzel.smash.listener.PlayerMoveListener;
+import dev.danzel.smash.listener.PlayerToggleFlightListener;
 import dev.danzel.smash.manager.GameManager;
 import dev.danzel.smash.manager.PlayerManager;
 import org.bukkit.Bukkit;
@@ -31,9 +33,11 @@ public class Smash extends JavaPlugin {
         playerManager = new PlayerManager();
         registerEvent(new EntityDamageByEntityListener());
         registerEvent(new EntityDamageListener());
+        registerEvent(new FoodLevelChangeListener());
         registerEvent(new PlayerInteractListener());
         registerEvent(new PlayerJoinQuitListener());
         registerEvent(new PlayerMoveListener());
+        registerEvent(new PlayerToggleFlightListener());
         disableChunkGeneration(Bukkit.getWorld("lobby"));
         disableChunkGeneration(Bukkit.getWorld("game"));
     }
