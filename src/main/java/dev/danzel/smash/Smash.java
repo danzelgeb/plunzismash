@@ -1,5 +1,6 @@
 package dev.danzel.smash;
 
+import dev.danzel.smash.data.Data;
 import dev.danzel.smash.manager.GameManager;
 import dev.danzel.smash.manager.PlayerManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,6 +14,7 @@ public class Smash extends JavaPlugin {
     public void onLoad() {
         instance = this;
         //todo load Map
+        new Data();
         gameManager = new GameManager();
     }
 

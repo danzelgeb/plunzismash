@@ -1,5 +1,6 @@
 package dev.danzel.smash.manager;
 
+import dev.danzel.smash.data.Data;
 import org.bukkit.entity.Player;
 
 public class GamePlayer {
@@ -25,7 +26,11 @@ public class GamePlayer {
     public void kill() {
         hp = hp - 1;
         if (hp == 0) {
-            player.kickPlayer("You died!"); //TODO end game
+            player.kickPlayer("GAME OVER");
+            //TODO end game
+            return;
         }
+
+        player.teleport(Data.getRandomSpawn());
     }
 }
