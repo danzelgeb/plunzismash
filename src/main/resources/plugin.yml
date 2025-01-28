@@ -1,0 +1,5 @@
+name: SMASH
+main: dev.danzel.smash.Smash
+version: <3
+author: danzel_34
+api-version: 1.21

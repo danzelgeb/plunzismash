@@ -1,6 +1,7 @@
 package dev.danzel.smash.listener;
 
 import dev.danzel.smash.Smash;
+import dev.danzel.smash.data.Data;
 import dev.danzel.smash.manager.GameManager;
 import net.kyori.adventure.text.Component;
 import org.bukkit.GameMode;
@@ -19,8 +20,8 @@ public class PlayerJoinQuitListener implements Listener {
                 return;
             }
             event.getPlayer().setGameMode(GameMode.CREATIVE);
-
         }
+        Data.prepareJoin(event.getPlayer());
         Smash.getInstance().getPlayerManager().addPlayer(event.getPlayer());
         Smash.getInstance().getGameManager().checkStart();
     }

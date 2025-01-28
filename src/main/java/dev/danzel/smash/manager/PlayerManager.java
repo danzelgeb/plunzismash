@@ -3,12 +3,14 @@ package dev.danzel.smash.manager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerManager {
     private Map<String, GamePlayer> players;
 
     public PlayerManager() {
+        players = new HashMap<>();
         Bukkit.getOnlinePlayers().forEach(player -> players.put(player.getName(), new GamePlayer(player)));
     }
 

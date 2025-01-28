@@ -1,8 +1,16 @@
 package dev.danzel.smash;
 
 import dev.danzel.smash.data.Data;
+import dev.danzel.smash.listener.EntityDamageByEntityListener;
+import dev.danzel.smash.listener.EntityDamageListener;
+import dev.danzel.smash.listener.PlayerInteractListener;
+import dev.danzel.smash.listener.PlayerJoinQuitListener;
+import dev.danzel.smash.listener.PlayerMoveListener;
 import dev.danzel.smash.manager.GameManager;
 import dev.danzel.smash.manager.PlayerManager;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Smash extends JavaPlugin {
@@ -13,14 +21,21 @@ public class Smash extends JavaPlugin {
     @Override
     public void onLoad() {
         instance = this;
-        //todo load Map
-        new Data();
         gameManager = new GameManager();
     }
 
     @Override
     public void onEnable() {
+        Data.importWorld("lobby");
+        Data.importWorld("game");
         playerManager = new PlayerManager();
+        registerEvent(new EntityDamageByEntityListener());
+        registerEvent(new EntityDamageListener());
+        registerEvent(new PlayerInteractListener());
+        registerEvent(new PlayerJoinQuitListener());
+        registerEvent(new PlayerMoveListener());
+        disableChunkGeneration(Bukkit.getWorld("lobby"));
+        disableChunkGeneration(Bukkit.getWorld("game"));
     }
 
     @Override
@@ -38,5 +53,16 @@ public class Smash extends JavaPlugin {
 
     public PlayerManager getPlayerManager() {
         return playerManager;
+    }
+
+    private void registerEvent(Listener listener) {
+        Bukkit.getPluginManager().registerEvents(listener, this);
+    }
+
+    private void disableChunkGeneration(World world) {
+        if (world != null) {
+            world.getPopulators().clear();
+            world.setKeepSpawnInMemory(false);
+        }
     }
 }
