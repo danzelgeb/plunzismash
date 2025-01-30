@@ -14,14 +14,18 @@ public class PlayerMoveListener implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
-        if (event.getTo().distance(Data.getQueue()) <= 3) {
+        if (event.getFrom().getWorld() == Data.getQueue().getWorld() && event.getTo().distance(Data.getQueue()) <= 3) {
             if (Smash.getInstance().getGameManager().isInQueue(event.getPlayer()))
                 return;
 
             Smash.getInstance().getGameManager().addPlayerToQueue(event.getPlayer());
             event.getPlayer().sendMessage(Component.text("Du bist in der Queue!"));
 
-            if (Smash.getInstance().getGameManager().getGameState() == GameManager.GameState.LOBBY && Bukkit.getOnlinePlayers().size() < 2) {
+            if (Smash.getInstance().getGameManager().getGameState() == GameManager.GameState.LOBBY && Bukkit.getOnlinePlayers().size() <= 2) {
+                Smash.getInstance().getGameManager().checkStart();
+            }
+
+            if (Smash.getInstance().getGameManager().getGameState() == GameManager.GameState.LOBBY && Bukkit.getOnlinePlayers().size() <= 2) {
                 Smash.getInstance().getGameManager().checkStart();
             }
         } else {
@@ -29,10 +33,6 @@ public class PlayerMoveListener implements Listener {
                 Smash.getInstance().getGameManager().removePlayerFromQueue(event.getPlayer());
                 event.getPlayer().sendMessage(Component.text("Du bist nicht mehr in der Queue!"));
             }
-        }
-
-        if (Smash.getInstance().getGameManager().getGameState() == GameManager.GameState.LOBBY && Bukkit.getOnlinePlayers().size() < 2) {
-            Smash.getInstance().getGameManager().checkStart();
         }
 
         if (event.getTo().getY() <= 80 && Smash.getInstance().getGameManager().getGameState() == GameManager.GameState.INGAME &&

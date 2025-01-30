@@ -9,8 +9,8 @@ import net.kyori.adventure.title.Title;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.jetbrains.annotations.NotNull;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,42 +32,59 @@ public class GameManager {
     }
 
     public void checkStart() {
+        System.out.println("Checking start");
         if (gameState == GameState.LOBBY && Smash.getInstance().getPlayerManager().getPlayers().size() >= 2) {
             //check if enough players are in queue area
             if (inQueue.size() < 2) return;
 
-            setGameState(GameState.INGAME);
+            System.out.println("Starting game");
+
             final int[] cooldown = {10};
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    if (cooldown[0] == 0) {
-                        start();
+                    //check if queue is under 2 than cancel and set cooldown to 10
+                    if (inQueue.size() < 2) {
+                        cooldown[0] = 10;
                         cancel();
+                        return;
                     }
+
+                    if (cooldown[0] <= 0) {
+                        start();
+                        System.out.println("TELEPORT...");
+                        cancel();
+                        return;
+                    }
+
+                    Title.Times times = Title.Times.times(Duration.ofSeconds(1), Duration.ofMinutes(1), Duration.ofSeconds(1));
+
+                    Title title = Title.title(
+                            Component.text("Das Spiel startet in " + cooldown[0])
+                                    .color(NamedTextColor.GREEN),
+                            Component.text(""),
+                            times);
+
                     cooldown[0]--;
                     Bukkit.getOnlinePlayers().forEach(player -> player.showTitle(
-                            Title.title(
-                                    Component.text("Das Spiel startet in " + cooldown[0])
-                                            .color(NamedTextColor.GREEN),
-                                    Component.text(""))
+                            title
                     ));
                 }
-            }.run();
+            }.runTaskTimer(Smash.getInstance(), 0, 20);
         }
     }
 
     public void start() {
         if (gameState != GameState.LOBBY) return;
-        for (GamePlayer gamePlayer : Smash.getInstance().getPlayerManager().getPlayers().values()) {
-            gamePlayer.getPlayer().teleport(Data.getRandomSpawn());
-            gamePlayer.getPlayer().showTitle(
+        setGameState(GameState.INGAME);
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayer.teleport(Data.getRandomSpawn());
+            onlinePlayer.showTitle(
                     Title.title(
                             Component.text("Das Spiel beginnt!")
                                     .color(NamedTextColor.GREEN)
                                     .decorate(TextDecoration.BOLD),
-                            Component.text(""))
-            );
+                            Component.text("")));
         }
     }
 

@@ -10,6 +10,8 @@ public class PlayerInteractListener implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
+        if (event.getItem() == null) return;
+        if (event.getItem().getType() == Material.AIR) return;
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Material material = event.getItem().getType();
             switch (material) {

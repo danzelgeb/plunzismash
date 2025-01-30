@@ -23,7 +23,6 @@ public class PlayerJoinQuitListener implements Listener {
         }
         Data.prepareJoin(event.getPlayer());
         Smash.getInstance().getPlayerManager().addPlayer(event.getPlayer());
-        Smash.getInstance().getGameManager().checkStart();
     }
 
     @EventHandler
