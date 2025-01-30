@@ -5,10 +5,12 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.WorldCreator;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Data {
     private static final List<Location> spawns = List.of(
@@ -54,9 +56,10 @@ public class Data {
     }
 
     public static void prepareJoin(Player player) {
-        player.teleport(Bukkit.getWorld("lobby").getSpawnLocation());
+        player.teleport(Objects.requireNonNull(Bukkit.getWorld("lobby")).getSpawnLocation());
         player.setGameMode(GameMode.ADVENTURE);
-        player.setMaxHealth(6.0);
+//        player.setMaxHealth(6.0); // Deprecated use below
+        Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(6.0);
         player.setFoodLevel(20);
         player.getInventory().clear();
     }
