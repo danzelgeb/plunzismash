@@ -1,4 +1,4 @@
-package dev.danzel.smash.listener;
+package net.plunzi.punchout.listener;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

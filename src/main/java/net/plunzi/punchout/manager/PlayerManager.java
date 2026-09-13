@@ -1,4 +1,4 @@
-package dev.danzel.smash.manager;
+package net.plunzi.punchout.manager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

@@ -1,7 +1,7 @@
-package dev.danzel.smash.manager;
+package net.plunzi.punchout.manager;
 
-import dev.danzel.smash.Smash;
-import dev.danzel.smash.data.Data;
+import net.plunzi.punchout.Smash;
+import net.plunzi.punchout.data.Data;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 

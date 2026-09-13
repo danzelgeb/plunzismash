@@ -1,15 +1,15 @@
-package dev.danzel.smash;
+package net.plunzi.punchout;
 
-import dev.danzel.smash.data.Data;
-import dev.danzel.smash.listener.EntityDamageByEntityListener;
-import dev.danzel.smash.listener.EntityDamageListener;
-import dev.danzel.smash.listener.FoodLevelChangeListener;
-import dev.danzel.smash.listener.PlayerInteractListener;
-import dev.danzel.smash.listener.PlayerJoinQuitListener;
-import dev.danzel.smash.listener.PlayerMoveListener;
-import dev.danzel.smash.listener.PlayerToggleFlightListener;
-import dev.danzel.smash.manager.GameManager;
-import dev.danzel.smash.manager.PlayerManager;
+import net.plunzi.punchout.data.Data;
+import net.plunzi.punchout.listener.EntityDamageByEntityListener;
+import net.plunzi.punchout.listener.EntityDamageListener;
+import net.plunzi.punchout.listener.FoodLevelChangeListener;
+import net.plunzi.punchout.listener.PlayerInteractListener;
+import net.plunzi.punchout.listener.PlayerJoinQuitListener;
+import net.plunzi.punchout.listener.PlayerMoveListener;
+import net.plunzi.punchout.listener.PlayerToggleFlightListener;
+import net.plunzi.punchout.manager.GameManager;
+import net.plunzi.punchout.manager.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.event.Listener;

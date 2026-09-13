@@ -1,8 +1,8 @@
-package dev.danzel.smash.listener;
+package net.plunzi.punchout.listener;
 
-import dev.danzel.smash.Smash;
-import dev.danzel.smash.data.Data;
-import dev.danzel.smash.manager.GameManager;
+import net.plunzi.punchout.Smash;
+import net.plunzi.punchout.data.Data;
+import net.plunzi.punchout.manager.GameManager;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
