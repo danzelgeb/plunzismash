@@ -1,4 +1,4 @@
-package dev.danzel.smash.data;
+package net.plunzi.punchout.data;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;

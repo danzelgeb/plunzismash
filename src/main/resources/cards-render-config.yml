@@ -1,0 +1,94 @@
+Rarities:
+  COMMON:
+    model_ids:
+      card: "plunzi:cards/common"
+      pointer: "plunzi:pointers/common"
+  UNCOMMON:
+    model_ids:
+      card: "plunzi:cards/uncommon"
+      pointer: "plunzi:pointers/uncommon"
+  RARE:
+    model_ids:
+      card: "plunzi:cards/rare"
+      pointer: "plunzi:pointers/rare"
+  EPIC:
+    model_ids:
+      card: "plunzi:cards/epic"
+      pointer: "plunzi:pointers/epic"
+  LEGENDARY:
+    model_ids:
+      card: "plunzi:cards/legendary"
+      pointer: "plunzi:pointers/legendary"
+
+Selector:
+  model_id: "plunzi:cards/selected"
+
+Enteties:
+  base_yaw: 0.0
+  Spawn:
+    Location:
+      x: 0.0
+      y: 64.0
+      z: 0.0
+      rotation: 0.0
+      facing: 0.0
+  Button:
+    Location:
+      x: 0.0
+      y: 64.0
+      z: 5.0
+  Card:
+    Height:
+      y: 65.0
+    Scale:
+      x: 1.0
+      y: 1.0
+      z: 1.0
+  Icon:
+    Height:
+      y: 65.5
+    Scale:
+      x: 0.5
+      y: 0.5
+      z: 0.5
+  Text:
+    Height:
+      y: 63.5
+    Scale:
+      x: 1.0
+      y: 1.0
+      z: 1.0
+  Pointer:
+    Height:
+      y: 66.5
+    Scale:
+      x: 0.5
+      y: 0.5
+      z: 0.5
+
+Slots:
+  Slot 1:
+    Location:
+      x: -4.0
+      z: 10.0
+    rotation: -20.0
+  Slot 2:
+    Location:
+      x: -2.0
+      z: 10.0
+    rotation: -10.0
+  Slot 3:
+    Location:
+      x: 0.0
+      z: 10.0
+    rotation: 0.0
+  Slot 4:
+    Location:
+      x: 2.0
+      z: 10.0
+    rotation: 10.0
+  Slot 5:
+    Location:
+      x: 4.0
+      z: 10.0
+    rotation: 20.0

@@ -1,7 +1,7 @@
-package dev.danzel.smash.listener;
+package net.plunzi.punchout.listener;
 
-import dev.danzel.smash.Smash;
-import dev.danzel.smash.manager.GameManager;
+import net.plunzi.punchout.Smash;
+import net.plunzi.punchout.manager.GameManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

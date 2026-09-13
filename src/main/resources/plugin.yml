@@ -1,5 +1,5 @@
 name: SMASH
-main: dev.danzel.smash.Smash
-version: <3
+main: net.plunzi.punchout.Smash
+version: '${version}'
 author: danzel_34
-api-version: 1.21
+api-version: '1.21'
